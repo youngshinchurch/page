@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 ">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://code.jquery.com/jquery-1.12.1.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="js/jquery.bxslider.js"></script>
+    <link rel="stylesheet" href="css/jquery.bxslider.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/style.css">
+    <title>울산영신교회</title>
+    <script>
+        $(document).ready(function(){
+            $('.slider').bxSlider();
+        });
+        </script>
+</head>
+<body>
+    <div id="wrap">
+        <header>
+            <div id="headerIn">
+                <!-- 오픈메뉴버튼 -->
+                <div class="navi">
+                    <a href="#"><span class="fas fa-bars"></span></a>
+                </div>
+                <!-- 로고 -->
+                <h1 class="logo"><a href="#"><img src="img/logo2.png" alt="로고"></a></h1>
+                <!-- 서치 -->
+                <div class="search">
+                </div>
+            </div>
+            
+            <nav id="gnb">
+                <ul>
+                    <li>
+                        <a href="#">교회소개</a>
+                        <ul class="depth2">
+                            <li><a href="#">인사말</a></li>
+                            <li><a href="#">섬기는 이들</a></li>
+                            <li><a href="#">찾아오시는 길</a></li>
+                            <li><a href="#">예배시간</a></li>
+                        </ul>    
+                    </li>
+                    
+                    <li><a href="#">교육ㆍ훈련</a>
+                        <ul class="depth2">
+                            <li><a href="#">화요QT모임</a></li>
+                            <li><a href="#">주일학교</a></li>
+                            <li><a href="#">코이노니아</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">설교ㆍ찬양</a>
+                        <ul class="depth2">
+                            <li><a href="#">설교</a></li>
+                            <li><a href="#">찬양대</a></li>
+                            <li><a href="#">찬양팀</a></li>
+                            <li><a href="#">특송</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">비전ㆍ사역</a>
+                        <ul class="depth2">
+                            <li><a href="#">교회비전</a></li>
+                            <li><a href="#">평신도 양육과정</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+            <div id="SearchBar">
+                <input type="search" name="sch" id="sch" placeholder="입력하세요">
+            </div>
+        </header>
+
+        <main>
+
+                <div id="mainslider">
+                        <ul class="slider">
+                            <li><a href="#"><img src="img/church2.jpg" alt=""></a></li>
+                            <li><a href="#"><img src="img/mal.jpg" alt=""></a></li>
+                            <li><a href="#"><img src="img/ms.jpg" alt=""></a></li>
+                        </ul>
+                    </div>
+
+           
+        </main>
+
+        <footer>
+            <nav id="fnav">
+                <ul>
+                    <li><a href="#">주소</a>
+                    <ul class="fdepth2">
+                        <li>
+                        <address>
+                        울산광역시<br>
+                        남구 돋질로 374번길 9<br>
+                        울산영신교회<br>
+                        </address>    
+                        </li>
+                    </ul>
+                    </li>
+
+                    <li><a href="#">전화</a>
+                    <ul class="fdepth2">
+                        <li>
+                        <span class="knum">
+                        전화:052-260-9847
+                        </span>
+                        <span class="cpy">
+                        팩스:052-291-1995    
+                        </span>    
+                        </li>
+                    </ul>
+                    </li>
+                </ul>
+            </nav>
+            <div class="flogo">
+                <a href="#">울산영신교회</a>
+            </div>
+            
+        </footer>
+    </div>
+</body>
+<script>
+$(".search>a").click(function(){
+    $("#SearchBar").slideToggle("500");
+    return false;
+});
+
+$(".navi>a").click(function(){
+    var poi = $("#gnb").css("display");
+    if(poi == "none"){
+        $("#gnb").show(100).animate({left:"0"});
+    }else if(poi == "block"){
+        $("#gnb").animate({left:"-100%"});
+        $("#gnb").fadeOut(200);
+        $(".depth2").slideUp();
+    }
+    return false;
+});
+
+$("#gnb>ul>li>a").click(function(){
+    var dis = $(this).siblings(".depth2");
+    var two = dis.css("display");
+    
+    if(two == "none"){
+        $(".depth2").slideUp();
+        dis.slideDown(); // dis => display:block;
+    }else if(two == "block"){
+        dis.slideUp();
+    }
+    return false;
+});
+
+/* 좋아요 버튼 */
+
+$(".btn>span.good").click(function(){
+    $(this).toggleClass("red");
+    return false;
+});
+
+/* 추천 */
+
+/* html문서 내부중 clickme라는 아이디명을 찾아 bttn이라는 변수안에 넣어 준다. */
+
+$(".selbox").change(function(){
+    $(".mm").hide(); // 현재 선택한 옵션 메뉴를 제외하고 다른 나머지 메뉴는 사라진다.
+    $("#"+$(this).val()).show();
+    /* 
+    내가 선택한 옵션메뉴에 관련되는 value의 값과 일치하는 아이디 명을 가지고 있는
+    메뉴만 나타내도록 해주는 구성 
+    */
+});
+
+var count = 0;
+$("#clickme1").click(function() {
+    count += 1;
+    $("#clickme1").html("추천: "+count);
+    return false;
+});
+
+var count2 = 0;
+$("#clickme2").click(function() {
+    count2 += 1;
+    $("#clickme2").html("추천: "+count2);
+    return false;
+});
+
+var count3 = 0;
+$("#clickme3").click(function() {
+    count3 += 1;
+    $("#clickme3").html("추천: "+count3);
+    return false;
+});
+
+
+$("#fnav>ul>li>a").click(function(){
+    var dis = $(this).siblings(".fdepth2");
+    var two = dis.css("display");
+    
+    if(two == "none"){
+        $(".fdepth2").slideUp();
+        dis.slideDown(); // dis => display:block;
+    }else if(two == "block"){
+        dis.slideUp();
+    }
+    return false;
+});
+
+
+$("#gall1 a").click(function(){
+    $(this).find(".conts").slideToggle();
+    return false;
+});
+
+
+
+</script>
+</html>
+    
